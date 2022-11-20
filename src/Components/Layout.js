@@ -2,14 +2,15 @@ import React, {useState, useEffect} from "react";
 import  Filter from "./Filter";
 import MovieCard from "./MovieCard";
 import { MovieList } from "./MovieList";
+import TheDarkKnight from "../Assets/TheDarkKnight.jpg"
 
 export default function Layout() {
     const [titleFilter, setFilter] = useState("")
     const [addMovie, setAddMovie] = useState({
-        id: "",
-        img: "",
+        id: Date.now(),
+        img: TheDarkKnight,
         title: "",
-        rate: ``,
+        rate: "",
         desc: ""
     })
 
@@ -21,28 +22,21 @@ export default function Layout() {
     )
 
 
-    const handleAddClick = () => { setAddMovie({
-            ...addMovie, 
-            id: Date.now(), 
-            img: "pas encore",
-            title: "dark night",
-            rate: "4.8/5",
-            desc: "super film"
-        })
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        MovieList.unshift(addMovie)
+        console.log(MovieList)
     }
-
-    useEffect(() => {
-        if (addMovie.id !== "") {
-            MovieList.push(addMovie)
-        }
-    },[addMovie])
+    
+    
 
     console.log(MovieList)
 
 
+
     return (
         <>
-            <Filter titleFilter={titleFilter} handleTitleSearch={handleTitleSearch} handleAddClick={handleAddClick}/>
+            <Filter titleFilter={titleFilter} handleTitleSearch={handleTitleSearch} addMovie={addMovie} setAddMovie={setAddMovie}   handleSubmit={handleSubmit}/>
             <MovieCard MovieList={MovieList} dataSearch={dataSearch}/>
         </>
     )
