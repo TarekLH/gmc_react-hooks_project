@@ -1,14 +1,9 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 
 
-export default function Filter(props) {
+export default function Filter({titleFilter, handleTitleSearch, handleAddClick}) {
 
-    const handleTitleSearch = (event) => {
-        props.setFilter(event.target.value)
-    }
-
-    console.log(props.titleFilter)
     return (
         <>
             <header className="p-3 text-bg-dark">
@@ -27,12 +22,18 @@ export default function Filter(props) {
                                 className="form-control form-control-dark text-bg-dark" 
                                 placeholder="Search Title/Rate..." 
                                 aria-label="Search"
-                                value={props.titleFilter}
-                                onChange={handleTitleSearch.bind(this)}
+                                value={titleFilter}
+                                onChange={handleTitleSearch}
                             />
                         </form>
                         <div className="text-end">
-                            <button type="button" className="btn btn-warning">Add Movie</button>
+                            <button 
+                                onClick={handleAddClick} 
+                                type="button" 
+                                className="btn btn-warning"
+                            >
+                                Add Movie
+                            </button>
                         </div>
                     </div>
                 </div>
