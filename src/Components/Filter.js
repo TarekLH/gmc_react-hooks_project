@@ -25,7 +25,7 @@ export default function Filter(props) {
                             <input 
                                 type="search" 
                                 className="form-control form-control-dark text-bg-dark" 
-                                placeholder="Search..." 
+                                placeholder="Search Title/Rate..." 
                                 aria-label="Search"
                                 value={props.titleFilter}
                                 onChange={handleTitleSearch.bind(this)}

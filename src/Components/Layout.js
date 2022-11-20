@@ -6,7 +6,9 @@ import { MovieList } from "./MovieList";
 export default function Layout() {
     const [titleFilter, setFilter] = useState("")
 
-    let dataSearch = MovieList.filter( movie => movie.title.toLowerCase().includes(titleFilter.toLowerCase()) )
+    let dataSearch = MovieList.filter( 
+        movie => movie.title.toLowerCase().includes(titleFilter.toLowerCase()) || movie.rate.includes(titleFilter) 
+    )
 
     return (
         <>
